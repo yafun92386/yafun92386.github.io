@@ -46,17 +46,6 @@ $ git push -u origin main
 $ apt install npm
 // 安裝Hexo
 $ npm install hexo-cli -g
-```
-> ```
-> // 安裝Hexo發生問題
-> throw new TypeError('Console expects a writable stream instance');
-> // 更新nodejs version
-> $ npm install -g n
-> $ n latest
-> // reset the command location
-> $ PATH="$PATH"
-> ```
-```
 // 建立資料夾
 $ hexo init <foldername>
 // 安裝套件
