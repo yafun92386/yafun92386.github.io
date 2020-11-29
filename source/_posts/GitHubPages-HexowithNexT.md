@@ -24,14 +24,14 @@ GitHub Pages是GitHub提供的一個網頁代管服務，用以呈現靜態網�
 
 複製專案到local端
 ```
- $ git clone <github.io>
+ $ git clone <repo URL>
 ```
 
 接下來即可建立網頁並上傳到GitHub瀏覽頁面
 ```
 $ git add index.html
 $ git commit -m "<message>"
-$ git remote add origin <github.io>
+$ git remote add origin <repo URL>
 $ git push -u origin main
 ```
 
@@ -110,7 +110,7 @@ $ git clone https://github.com/theme-next/hexo-theme-next.git
 $ hexo clean
 // 建立靜態檔案
 $ hexo generate
-// 佈署至GitHub Pages
+// 佈署至GitHub
 $ hexo deploy
 ```
 
