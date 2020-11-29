@@ -19,9 +19,13 @@
 		display: none;
 	}
 
-	.post-block:not(:first-child) {
-		margin-top: 60px;
-		margin-bottom: 60px;
+	.post-block {
+		margin-top: 20px;
+		margin-bottom: 20px;
+		padding: 25px;
+		border-radius: 5px;
+		-webkit-box-shadow: 0 0 10px rgba(202, 203, 203, .5); 
+		-moz-box-shadow: 0 0 10px rgba(202, 203, 204, .5); 
 	}
 
 	.post-title, .post-meta {
@@ -59,7 +63,8 @@
 		// color: $grey-dim;
 		background: none;
 		border: 0;
-		border-bottom: 2px solid var(--btn-default-border-color);
+		border-bottom: 0.5px dashed var(--btn-default-border-color);
+		opacity: 0.8
 		padding: 0;
 		transition-property: border;
 

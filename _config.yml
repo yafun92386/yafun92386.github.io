@@ -3,11 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: '知識轉換實力'
-subtitle: '學點能力賺些錢錢買給貓兒子很多罐罐'
-description: '記錄點什麼，好像就會些什麼。'
+title: 'Avon;s*Notes'
+subtitle: ''
+description: |
+  <p>
+  Hi! 我是Avon :D </br>
+  在這裡記錄一些學習筆記，</br>
+  培養能力好給貓兒子買罐罐。</br>
+  </p>
 keywords:
-author: 被貓奴耽誤的偽工程師 𓃠
+author: Avon Hsiao
 language: en
 timezone: ''
 
@@ -107,3 +112,10 @@ deploy:
   repo: https://github.com/yafun92386/yafun92386.github.io.git
   branch: main
 
+# Custom
+
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000

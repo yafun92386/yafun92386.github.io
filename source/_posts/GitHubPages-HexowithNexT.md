@@ -1,13 +1,13 @@
 ---
-title: GitHub Pages + Hexo搭建NexT主題Blog
+title: "[Hexo] GitHub Pages + Hexo搭建NexT主題Blog"
 date: 2020-11-28 20:14:56
 categories: 
 - [Web, Hexo]
-tags:
+tags: 
 - GitHubPages 
 - Git
 - Hexo
----
+--- 
 
 
 想要做些筆記，留下一點紀錄，於是有了這個網站與這篇文誕生...
@@ -116,7 +116,7 @@ $ hexo deploy
 
 ---
 
-### 參考資料
+## 參考資料
 
 [GitHub Pages](https://pages.github.com/)
 [Hexo](https://hexo.io/zh-tw/)

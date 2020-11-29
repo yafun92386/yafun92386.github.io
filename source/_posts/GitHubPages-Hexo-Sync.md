@@ -1,13 +1,13 @@
 ---
-title: GitHub Pages + Hexo跨設備同步
+title: "[Hexo] GitHub Pages + Hexo跨設備同步"
 date: 2020-11-29 15:52:09
-categories:
+categories: 
 - [Web, Hexo]
-tags:
+tags: 
 - GitHubPages
 - Git
 - Hexo
----
+--- 
 
 利用Hexo建立好GitHub Pages後，如果想要在不同設備上發布文章的話該怎麼做?
 
