@@ -26,7 +26,7 @@ tags:
 
 ## 原設備操作
 
-在建置好Hexo的資料夾下上將資料git到GitHub
+在建置好Hexo的資料夾下上將資料git到GitHub。
 
 ### 上傳Hexo配置
 
@@ -68,6 +68,10 @@ $ git clone -b <branchname> https://github.com/<username>/<username>.github.io.g
 // 遠端與本地同步
 $ git pull origin <branchname>
 ```
+
+---
+
+同步完資源後，就可以在本機端編寫文章並上傳。
 
 ### 編寫文章
 
