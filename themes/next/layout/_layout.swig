@@ -56,5 +56,8 @@
   {%- if theme.pjax %}
     </div>
   {%- endif %}
+  <!-- 滑鼠點擊 
+  <script type="text/javascript" src="/js/cursor/text.js"></script>
+  -->
 </body>
 </html>
