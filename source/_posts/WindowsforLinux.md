@@ -20,7 +20,7 @@ tags:
 Windows Subsystem for Linux (WSL)
 : 在Windows 10上與Linux相容的核心介面。
 
-## 安裝WSL
+## 1. 安裝WSL
 
 GUI :
 設定-更新與安全性-開發人員專用-開發人員模式
@@ -41,7 +41,7 @@ Microsoft Store安裝Ubuntu-啟動-enter username & password
 
 可以啟用多索引標籤的Terminal，又能自訂樣式(哭)
 
-## 安裝Windows Terminal
+## 2. 安裝Windows Terminal
 
 Microsoft Store安裝Windows Terminal
 
@@ -52,7 +52,7 @@ Microsoft Store安裝Windows Terminal
 > `schemes`:配色主題
 > `actions`:自定義快捷鍵
 
-### 自定義terminal環境設定
+### 2.1 自定義terminal環境設定
 
 > 背景存放路徑:
 > `C:\Users\{username}\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\RoamingState`

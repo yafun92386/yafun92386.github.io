@@ -15,7 +15,7 @@ tags:
 
 ---
 
-## 前置作業
+## 1. 前置作業
 
 [GitHub Pages + Hexo搭建NexT主題Blog](https://yafun92386.github.io/2020/11/28/GitHubPags-HexowithNexT/)
 
@@ -24,11 +24,11 @@ tags:
 
 ---
 
-## 原設備操作
+## 2. 原設備操作
 
 在建置好Hexo的資料夾下上將資料git到GitHub。
 
-### 上傳Hexo配置
+### 2.1 上傳Hexo配置
 
 ```
 // git 初始化
@@ -47,11 +47,11 @@ $ git push origin <branckname>
 
 ---
 
-## 其他設備操作
+## 3. 其他設備操作
 
 透過GitHub上的資料，即可在其他設備上進行同步操作。
 
-### 同步資源
+### 3.1 同步資源
 
 #### 初次複製
 
@@ -73,14 +73,14 @@ $ git pull origin <branchname>
 
 同步完資源後，就可以在本機端編寫文章並上傳。
 
-### 編寫文章
+### 3.2 編寫文章
 
 ```
 // 建立新文章編輯
 $ hexo new "title"
 ```
 
-### 同步資源至GitHub
+### 3.3 同步資源至GitHub
 
 ```
 // 添加檔案文件
@@ -91,7 +91,7 @@ $ git commit -m "<message>"
 $ git push origin <branchname>
 ```
 
-### 更新Blog
+### 3.4 更新Blog
 
 ```
 $ hexo clean && hexo generate && hexo deploy

@@ -1,23 +1,26 @@
 ---
-title: "[Markdown] Markdown語法整理"
+title: "[Hexo] Markdown語法整理 + NexT的Tag Plugin"
 date: 2020-11-30 18:18:45
 categories: 
-- [Language, Markdown]
+- [Web, Hexo]
 tags: 
+- Hexo
 - Markdown
 --- 
 
-Hexo使用Markdown來編寫文章，因此來整理一些需要的語法。
+Hexo使用Markdown來編寫文章，因此來整理一些需要的語法，還有補充支援Next的Tag Plugins。
 
 <!-- more -->
 
 ---
 
+# 1. Markdown
+
 Markdown是一種標記式語言，減少標籤、格式指令以強調可讀性。
 
-## 文字樣式
+## 1.1 文字樣式
 
-### 標題
+### 1) 標題
 
 #### Stext形式
 分為6個層級，於行首插入`#`與空白。
@@ -40,7 +43,7 @@ Markdown是一種標記式語言，減少標籤、格式指令以強調可讀性
 
 ---
 
-### 分隔線
+### 2) 分隔線
 
 用3個以上的星號`*`、減號`-`、底線`_`來建立分隔線，行內不能有其他符號，可以插入空白。
 ```
@@ -51,7 +54,7 @@ _ _ _
 
 ---
 
-### 文字字體
+### 3) 文字字體
 
 **粗體** `**粗體標示**` 、 `__粗體標示__`
 
@@ -65,7 +68,7 @@ _ _ _
 
 ---
 
-### 引言
+### 4) 引言
 
 使用email形式的引言，於行首加上`>`，亦可使用階層、標題、清單關係語法。
 ```
@@ -75,7 +78,7 @@ _ _ _
 
 ---
 
-### 程式碼
+### 5) 程式碼
 
 #### 文字程式碼
 輸入1個反引號`` ` ``涵蓋。
@@ -97,7 +100,7 @@ int main()
 
 ---
 
-### 公式
+### 6) 公式
 
 以`$`涵蓋表示行內公式，`$$`涵蓋表示獨立公式。
 > 其餘語法參考:
@@ -108,9 +111,9 @@ int main()
 
 ---
 
-## 格式樣式
+## 1.2 格式樣式
 
-### 清單
+### 1) 清單
 
 支援有序清單和無序清單，可使用階層式。
 
@@ -133,7 +136,7 @@ int main()
 
 ---
 
-### 待辦事項
+### 2) 待辦事項
 
 [ ] 表示空框框，[x]顯示打勾。
 ```
@@ -144,7 +147,7 @@ int main()
 
 ---
 
-### 表格
+### 3) 表格
 
 第一列為標題列，第二列以`---`區隔，以`|`增加欄位，欄寬會自動分配不用對齊。
 ```
@@ -161,7 +164,7 @@ int main()
 
 ---
 
-### 連結
+### 4) 連結
 
 ```
 [連結文字](連結網址)
@@ -172,7 +175,7 @@ int main()
 
 ---
 
-### 圖片
+### 5) 圖片
 
 ```
 ![圖片替代文字](圖片連結)
@@ -180,6 +183,38 @@ int main()
 
 ---
 
-## 參考資料
+# 2. Tag Plugins
+
+Hexo除了採用Markdown編寫文章，亦提供Tag Plugin編寫的功能，以下整理NexT提供的Tag。
+
+## 1) 文本置中引用
+```
+{% centerquote %}blah blah blah{% endcenterquote %}
+
+{% cq %} blah blah blah {% endcq %}
+```
+效果: 
+{% cq %} blah blah blah {% endcq %}
+
+---
+
+## 2) Note標籤
+
+```
+// class: default, primary, success, info, warning, danger
+// no-icon: Disable icon in note.
+{% note [class] [no-icon] %}
+blah blah blah
+{% endnote %}
+```
+效果:
+{% note [] [] %}
+blah blah blah
+{% endnote %}
+
+--- 
+
+# 參考資料
 
 [Markdown語法說明](https://markdown.tw/)
+[內置標籤-NexT使用文檔](https://theme-next.iissnan.com/tag-plugins.html)

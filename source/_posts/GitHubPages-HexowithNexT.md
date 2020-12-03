@@ -17,7 +17,7 @@ tags:
 
 GitHub Pages是GitHub提供的一個網頁代管服務，用以呈現靜態網頁。
 
-## 建立 GitHub Page
+## 1. 建立 GitHub Page
 
 在GitHub上建立新專案
 專案名稱必須是 `<username>.github.io`
@@ -39,7 +39,7 @@ $ git push -u origin main
 
 善用靜態網頁產生器(Static Site Generator, SSG)快速佈署網頁。
 
-## 安裝 Hexo
+## 2. 安裝 Hexo
 
 ```
 // 先安裝Node Package Manager(Node.js套件管理工具)
@@ -56,7 +56,7 @@ $ npm install hexo-deployer-git --save
 
 ---
 
-### 設定Hexo相關資訊
+### 2.1 設定Hexo相關資訊
 
 進入設定好的Hexo資料夾開啟_config.yml編輯
 
@@ -86,7 +86,7 @@ deploy:
 
 預設主題看不慣?那試試眾多開源者貢獻的NexT主題吧!
 
-## 套用 NexT 主題
+## 3. 套用 NexT 主題
 
 在`/themes/`資料夾中把NexT主題複製下來
 ```
@@ -98,13 +98,13 @@ $ git clone https://github.com/theme-next/hexo-theme-next.git
 
 嘗試自己改改NexT配置，或加入需要的插件
 
-### Next 設置
+### 3.1 Next 設置
 
 可以參考 [NexT使用文檔](https://theme-next.iissnan.com/) 設置
 
 ---
 
-## 佈署至GitHub
+## 4. 佈署至GitHub
 ```
 // 清除之前建立的靜態檔案
 $ hexo clean
