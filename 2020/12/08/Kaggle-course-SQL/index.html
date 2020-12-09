@@ -20,17 +20,22 @@
     var CONFIG = {"hostname":"yafun92386.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="Hi! 我是Avon :D  在這裡記錄一些學習筆記， 培養能力好給貓兒子買罐罐。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Avon;s*Notes">
-<meta property="og:url" content="http://yafun92386.github.io/archives/index.html">
+  <meta name="description" content="Learn SQL by using Google BigQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[SQL] Kaggle Course - SQL">
+<meta property="og:url" content="http://yafun92386.github.io/2020/12/08/Kaggle-course-SQL/index.html">
 <meta property="og:site_name" content="Avon;s*Notes">
-<meta property="og:description" content="Hi! 我是Avon :D  在這裡記錄一些學習筆記， 培養能力好給貓兒子買罐罐。">
+<meta property="og:description" content="Learn SQL by using Google BigQuery">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-08T14:13:13.000Z">
+<meta property="article:modified_time" content="2020-12-09T06:12:38.854Z">
 <meta property="article:author" content="Avon Hsiao">
+<meta property="article:tag" content="Kaggle">
+<meta property="article:tag" content="SQL">
+<meta property="article:tag" content="BigQuery">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yafun92386.github.io/archives/">
+<link rel="canonical" href="http://yafun92386.github.io/2020/12/08/Kaggle-course-SQL/">
 
 
 <script id="page-configurations">
@@ -38,12 +43,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Archive | Avon;s*Notes</title>
+  <title>[SQL] Kaggle Course - SQL | Avon;s*Notes</title>
   
 
 
@@ -151,150 +156,123 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">Um..! 6 posts in total. Keep on posting.</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+	<link itemprop="mainEntityOfPage" href="http://yafun92386.github.io/2020/12/08/Kaggle-course-SQL/">
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+	<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+	  <meta itemprop="image" content="/images/photo.jpg">
+	  <meta itemprop="name" content="Avon Hsiao">
+	  <meta itemprop="description" content="<p>
+Hi! 我是Avon :D </br>
+在這裡記錄一些學習筆記，</br>
+培養能力好給貓兒子買罐罐。</br>
+</p>
+">
+	</span>
+
+	<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+	  <meta itemprop="name" content="Avon;s*Notes">
+	</span>
+	  <header class="post-header">
+		<h1 class="post-title" itemprop="name headline">
+		  [SQL] Kaggle Course - SQL
+		</h1>
+
+		<div class="post-meta">
+			<span class="post-meta-item">
+			  <span class="post-meta-item-icon">
+				<i class="far fa-calendar"></i>
+			  </span>
+			  <span class="post-meta-item-text">Posted on</span>
+
+			  <time title="Created: 2020-12-08 22:13:13" itemprop="dateCreated datePublished" datetime="2020-12-08T22:13:13+08:00">2020-12-08</time>
+			</span>
+			<span class="post-meta-item">
+			  <span class="post-meta-item-icon">
+				<i class="far fa-folder"></i>
+			  </span>
+			  <span class="post-meta-item-text">In</span>
+				<span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+				  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+				</span>
+				  , 
+				<span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+				  <a href="/categories/Note/SQL/" itemprop="url" rel="index"><span itemprop="name">SQL</span></a>
+				</span>
+			</span>
+
+		  
+
+		</div>
+	  </header>
+
+	
+	
+	
+	<div class="post-body" itemprop="articleBody">
+
+	  
+		<p>Learn SQL by using Google BigQuery</p>
+<a id="more"></a>
+
+<hr>
+<p>BigQuery是Google提供一個無需伺服器的資料倉儲與分析服務系統，以SQL查詢資料。</p>
+<h1 id="1-事前準備"><a href="#1-事前準備" class="headerlink" title="1. 事前準備"></a>1. 事前準備</h1><p>建立Google Cloud專案</p>
+<p><a target="_blank" rel="noopener" href="https://console.cloud.google.com/projectselector2/home/dashboard?_ga=2.181894574.847070024.1607437297-688873900.1607437297&_gac=1.91197544.1607438686.Cj0KCQiA5bz-BRD-ARIsABjT4ngzMSMkc9Akyr7tYV7Ur0d0H4HqeveucJybK1swRhZ5yJ2uZCohYawaApHvEALw_wcB">Go to the project selector page</a></p>
+<p>啟用BigQuery API</p>
+<p><a target="_blank" rel="noopener" href="https://console.cloud.google.com/flows/enableapi?apiid=bigquery&_ga=2.177659564.847070024.1607437297-688873900.1607437297&_gac=1.192852184.1607438686.Cj0KCQiA5bz-BRD-ARIsABjT4ngzMSMkc9Akyr7tYV7Ur0d0H4HqeveucJybK1swRhZ5yJ2uZCohYawaApHvEALw_wcB">Enable the API</a></p>
+<p>設定憑證</p>
+<p><a target="_blank" rel="noopener" href="https://console.cloud.google.com/apis/credentials/serviceaccountkey?_ga=2.172948010.847070024.1607437297-688873900.1607437297&_gac=1.81295845.1607438686.Cj0KCQiA5bz-BRD-ARIsABjT4ngzMSMkc9Akyr7tYV7Ur0d0H4HqeveucJybK1swRhZ5yJ2uZCohYawaApHvEALw_wcB">Go to the Create Service Account Key page</a></p>
+<p>New a service account - Enter service account name<br>Select role list - Choose JSON format</p>
+<p>載入金鑰</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">os.environ[“GOOGLE_APPLICATION_CREDENTIALS”] &#x3D; &quot;Project_name-Prject_number.json&quot;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-使用BigQuery"><a href="#2-使用BigQuery" class="headerlink" title="2. 使用BigQuery"></a>2. 使用BigQuery</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Install the BigQuery</span><br><span class="line">$ pip install google-cloud-bigquery</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Import Python package</span><br><span class="line">from google.cloud import bigquery</span><br><span class="line"># Create a &quot;Client&quot; object</span><br><span class="line">client &#x3D; bigquery.Client()</span><br></pre></td></tr></table></figure>
+
+<p>《…待續…》</p>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a target="_blank" rel="noopener" href="https://cloud.google.com/bigquery">Google Cloud BigQuery</a></p>
+<p><a target="_blank" rel="noopener" href="https://gcpug-tw.gitbook.io/google-cloud-platform-in-practice/google-cloud-shang-de-da-zi-liao-chu-li-fu-wu/bigquery/bigquery-jian-jie">GCPUG - BigQuery 簡介</a></p>
+
+	</div>
+
+	
+	
+	<div>
+    
+        <div style="text-align:left;color: #888888;"> <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> 分享完畢 感謝您的閱讀 <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> </div>
+    
+</div>
+
+	  <footer class="post-footer">
+		  <div class="post-tags">
+			  <a href="/tags/Kaggle/" rel="tag"># Kaggle</a>
+			  <a href="/tags/SQL/" rel="tag"># SQL</a>
+			  <a href="/tags/BigQuery/" rel="tag"># BigQuery</a>
+		  </div>
+
+		
+
+
+		
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/12/02/Swipe-to-Unlock-The-Primer-on-Technology-and-Business-Strategy/" rel="prev" title="[Review] GOOGLE、臉書、微軟專家教你的66堂科技趨勢必修課">
+      <i class="fa fa-chevron-left"></i> [Review] GOOGLE、臉書、微軟專家教你的66堂科技趨勢必修課
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-08T22:13:13+08:00"
-              content="2020-12-08">
-          12-08
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/08/Kaggle-course-SQL/" itemprop="url">
-            <span itemprop="name">[SQL] Kaggle Course - SQL</span>
-          </a>
-      </div>
-
-    </header>
+	  </footer>
+	
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-02T14:52:46+08:00"
-              content="2020-12-02">
-          12-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/02/Swipe-to-Unlock-The-Primer-on-Technology-and-Business-Strategy/" itemprop="url">
-            <span itemprop="name">[Review] GOOGLE、臉書、微軟專家教你的66堂科技趨勢必修課</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-11-30T18:18:45+08:00"
-              content="2020-11-30">
-          11-30
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/11/30/Markdown-syntax/" itemprop="url">
-            <span itemprop="name">[Hexo] Markdown語法整理 + NexT的Tag Plugin</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-11-29T19:11:27+08:00"
-              content="2020-11-29">
-          11-29
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/11/29/WindowsforLinux/" itemprop="url">
-            <span itemprop="name">[Shell] Windows上的Linux - WSL(Windows Subsystem for Linux)</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-11-29T15:52:09+08:00"
-              content="2020-11-29">
-          11-29
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/11/29/GitHubPages-Hexo-Sync/" itemprop="url">
-            <span itemprop="name">[Hexo] GitHub Pages + Hexo跨設備同步</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-11-28T20:14:56+08:00"
-              content="2020-11-28">
-          11-28
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/11/28/GitHubPages-HexowithNexT/" itemprop="url">
-            <span itemprop="name">[Hexo] GitHub Pages + Hexo搭建NexT主題Blog</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -347,6 +325,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E4%BA%8B%E5%89%8D%E6%BA%96%E5%82%99"><span class="nav-text">1. 事前準備</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8BigQuery"><span class="nav-text">2. 使用BigQuery</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-text">參考資料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
