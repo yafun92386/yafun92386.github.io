@@ -5,6 +5,9 @@ categories:
 - [Note, DevOps]
 tags:
 - DevOps
+- Agile
+- CI
+- CD
 ---
 
 ## DevOps 是甚麼?
@@ -13,20 +16,15 @@ DevOps 是一種軟體開發概念，即由開發(**Dev**elopment)和維運(**Op
 
 <!-- more -->
 
-<center>
 
 ![DevOps為開發、技術營運、品質保障之交集](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Devops.svg/220px-Devops.svg.png)
-
 [Wikipedia - DevOps](https://zh.wikipedia.org/wiki/DevOps)
-</center>
 
 ## DevOps 觀念
 
-<center>
-
 ![DevOps 觀念](https://image.slidesharecdn.com/devops-161102143628/95/devops-49-638.jpg?cb=1478098131)
 [DevOps：建造開發維運的跨界之橋](https://www.slideshare.net/warfan/devops-53161280)
-</center>
+
 
 DevOps 的核心觀念可以用"CALMS"來解釋:
 
@@ -55,11 +53,11 @@ DevOps強調Dec+Ops互相協作，建立良好跨團隊合作。
 ## DevOps 實務觀念
 
 ### CI/CD 持續整合/交付
-<center>
+
 <img src="https://www.tricentis.com/wp-content/uploads/2019/01/DevOps-cycle-Extended.png" width="50%" height="50%">
 
 [Tricentis - What is Continuous Testing?](https://www.tricentis.com/products/what-is-continuous-testing/)
-</center>
+
 
 CI (Continuous Integration) 持續整合:
 持續驗證開發結果，依據產出快速修正。
@@ -81,23 +79,16 @@ CD (Continuous Deployment) 持續佈署:
 
 ## DevOps 工具
 
-<center>
 
 ![DevOps cycle](https://cdn2.hubspot.net/hubfs/208250/social-suggested-images/DevOps-Infographic-v1.4%20690x690-1.png)
 [DevOps Tools Ecosystem](https://dzone.com/articles/the-ultimate-devops-tools-ecosystem-tutorial-part-5#)
-</center>
-
-<center>
 
 ![DevOps Tools Ecosystem](https://lh3.googleusercontent.com/a38m7q5sAgrhHCtnXKYkTi0pJWnSPgQk9IEkkzP-2Xk0n_9GZEFZvl9j4DL1WZ43vidyr0WtffPxvFNZVDD0b2jpFrSL4vbZZp1a_qNL1dYSsg_tqzidoKFgSx8O08fmYWwrwKMY)
 [CD Tools](https://harness.io/blog/continuous-delivery-tools/)
-</center>
-
-<center>
 
 ![DevOps Tool Landscape](http://www.jamesbowman.me/post/cdlandscape/ContinuousDeliveryToolLandscape-fullsize.jpeg)
 [CD Tools](http://www.jamesbowman.me/post/continuous-delivery-tool-landscape/)
-</center>
+
 
 ---
 
