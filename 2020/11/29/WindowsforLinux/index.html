@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/woody-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/woody-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/woody-16x16.png">
+  <link rel="mask-icon" href="/images/woody-logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif TC:300,300italic,400,400italic,700,700italic|Tajawal:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yafun92386.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="習慣Linux指令後就回不去了，不想裝VM又不肯灌系統? 那就用WSL吧!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Shell] Windows上的Linux - WSL(Windows Subsystem for Linux)">
+<meta property="og:url" content="http://yafun92386.github.io/2020/11/29/WindowsforLinux/index.html">
+<meta property="og:site_name" content="Avon;s*Notes">
+<meta property="og:description" content="習慣Linux指令後就回不去了，不想裝VM又不肯灌系統? 那就用WSL吧!">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-29T11:11:27.000Z">
+<meta property="article:modified_time" content="2021-02-24T02:49:05.994Z">
+<meta property="article:author" content="Avon Hsiao">
+<meta property="article:tag" content="Windows">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Ubuntu">
+<meta property="article:tag" content="Shell">
+<meta property="article:tag" content="Terminal">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yafun92386.github.io/2020/11/29/WindowsforLinux/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>[Shell] Windows上的Linux - WSL(Windows Subsystem for Linux) | Avon;s*Notes</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Avon;s*Notes</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+	<link itemprop="mainEntityOfPage" href="http://yafun92386.github.io/2020/11/29/WindowsforLinux/">
+
+	<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+	  <meta itemprop="image" content="/images/photo.jpg">
+	  <meta itemprop="name" content="Avon Hsiao">
+	  <meta itemprop="description" content="<p>
+Hi! 我是Avon :D </br>
+在這裡記錄一些學習筆記，</br>
+培養能力好給貓兒子買罐罐。</br>
+</p>
+">
+	</span>
+
+	<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+	  <meta itemprop="name" content="Avon;s*Notes">
+	</span>
+	  <header class="post-header">
+		<h1 class="post-title" itemprop="name headline">
+		  [Shell] Windows上的Linux - WSL(Windows Subsystem for Linux)
+		</h1>
+
+		<div class="post-meta">
+			<span class="post-meta-item">
+			  <span class="post-meta-item-icon">
+				<i class="far fa-calendar"></i>
+			  </span>
+			  <span class="post-meta-item-text">Posted on</span>
+
+			  <time title="Created: 2020-11-29 19:11:27" itemprop="dateCreated datePublished" datetime="2020-11-29T19:11:27+08:00">2020-11-29</time>
+			</span>
+			<span class="post-meta-item">
+			  <span class="post-meta-item-icon">
+				<i class="far fa-folder"></i>
+			  </span>
+			  <span class="post-meta-item-text">In</span>
+				<span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+				  <a href="/categories/Tool/" itemprop="url" rel="index"><span itemprop="name">Tool</span></a>
+				</span>
+			</span>
+
+		  
+
+		</div>
+	  </header>
+
+	
+	
+	
+	<div class="post-body" itemprop="articleBody">
+
+	  
+		<p>習慣Linux指令後就回不去了，不想裝VM又不肯灌系統? 那就用WSL吧!</p>
+<a id="more"></a>
+
+<hr>
+<dl><dt>Windows Subsystem for Linux (WSL)</dt><dd>在Windows 10上與Linux相容的核心介面。</dd></dl><h2 id="1-安裝WSL"><a href="#1-安裝WSL" class="headerlink" title="1. 安裝WSL"></a>1. 安裝WSL</h2><p>GUI :<br>設定-更新與安全性-開發人員專用-開發人員模式<br>設定-應用程式-程式和功能-<br>開啟或關閉Windows功能-適用於Linux的Windows(Windows子系統Linux版)</p>
+<p>CMD :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux</span><br></pre></td></tr></table></figure>
+
+<p>Microsoft Store安裝Ubuntu-啟動-enter username &amp; password</p>
+<blockquote>
+<p>預設安裝路徑為:<br><code>C:\Users\&#123;windowsuser&#125;\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs\home\&#123;linuxuser&#125;\</code></p>
+</blockquote>
+<hr>
+<p>可以啟用多索引標籤的Terminal，又能自訂樣式(哭)</p>
+<h2 id="2-安裝Windows-Terminal"><a href="#2-安裝Windows-Terminal" class="headerlink" title="2. 安裝Windows Terminal"></a>2. 安裝Windows Terminal</h2><p>Microsoft Store安裝Windows Terminal</p>
+<p>下拉選單開啟設定(setting.json)包含:</p>
+<blockquote>
+<p><code>global setting</code>:設置默認Profile<br><code>profiles</code>:下拉選單可開啟的shell profile、環境裡terminal顯示<br><code>schemes</code>:配色主題<br><code>actions</code>:自定義快捷鍵</p>
+</blockquote>
+<h3 id="2-1-自定義terminal環境設定"><a href="#2-1-自定義terminal環境設定" class="headerlink" title="2.1 自定義terminal環境設定"></a>2.1 自定義terminal環境設定</h3><blockquote>
+<p>背景存放路徑:<br><code>C:\Users\&#123;username&#125;\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\RoamingState</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;useAcrylic&quot;: true, &#x2F;&#x2F; Windows壓克力效果著色</span><br><span class="line">&quot;acrylicOpacity&quot;: 0.8, &#x2F;&#x2F; 壓克力效果透明度</span><br><span class="line">&quot;colorScheme&quot;: &quot;One Half Dark&quot;, &#x2F;&#x2F; 配色主題</span><br><span class="line">&quot;backgroundImage&quot;: &quot;ms-appdata:&#x2F;&#x2F;&#x2F;roaming&#x2F;ubuntu.jpg&quot;, &#x2F;&#x2F; 背景圖</span><br><span class="line">&quot;backgroundImageStretchMode&quot;: &quot;uniformToFill&quot;, &#x2F;&#x2F; 伸縮模式:按比例放大</span><br><span class="line">&quot;backgroundImageOpacity&quot;: 0.3 &#x2F;&#x2F; 圖片透明度</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux">Windows Subsystem for Linux</a><br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-tw/windows/terminal/">Windows終端機概觀</a><br><a target="_blank" rel="noopener" href="https://sspai.com/post/59380">新生代 Windows 终端：Windows Terminal 的全面自定义</a></p>
+
+	</div>
+
+	
+	
+	<div>
+    
+        <div style="text-align:left;color: #888888;"> <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> 分享完畢 感謝您的閱讀 <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> </div>
+    
+</div>
+
+	  <footer class="post-footer">
+		  <div class="post-tags">
+			  <a href="/tags/Windows/" rel="tag"># Windows</a>
+			  <a href="/tags/Linux/" rel="tag"># Linux</a>
+			  <a href="/tags/Ubuntu/" rel="tag"># Ubuntu</a>
+			  <a href="/tags/Shell/" rel="tag"># Shell</a>
+			  <a href="/tags/Terminal/" rel="tag"># Terminal</a>
+		  </div>
+
+		
+
+
+		
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/29/GitHubPages-Hexo-Sync/" rel="prev" title="[Hexo] GitHub Pages + Hexo跨設備同步">
+      <i class="fa fa-chevron-left"></i> [Hexo] GitHub Pages + Hexo跨設備同步
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/11/30/Markdown-syntax/" rel="next" title="[Hexo] Markdown語法整理 + NexT的Tag Plugin">
+      [Hexo] Markdown語法整理 + NexT的Tag Plugin <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+	  </footer>
+	
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%9DWSL"><span class="nav-text">1. 安裝WSL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%9DWindows-Terminal"><span class="nav-text">2. 安裝Windows Terminal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E8%87%AA%E5%AE%9A%E7%BE%A9terminal%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A"><span class="nav-text">2.1 自定義terminal環境設定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-text">參考資料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Avon Hsiao"
+      src="/images/photo.jpg">
+  <p class="site-author-name" itemprop="name">Avon Hsiao</p>
+  <div class="site-description" itemprop="description"><p>
+Hi! 我是Avon :D </br>
+在這裡記錄一些學習筆記，</br>
+培養能力好給貓兒子買罐罐。</br>
+</p>
+</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yafun92386" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yafun92386" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yafun92386@gmail.com" title="E-Mail → mailto:yafun92386@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/oxapplexo/" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;oxapplexo&#x2F;" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/woody0320meow" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;woody0320meow" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fas fa-paw"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Avon Hsiao</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  <!-- 滑鼠點擊 
+  <script type="text/javascript" src="/js/cursor/text.js"></script>
+  -->
+</body>
+</html>

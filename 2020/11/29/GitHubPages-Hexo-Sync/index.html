@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/woody-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/woody-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/woody-16x16.png">
+  <link rel="mask-icon" href="/images/woody-logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif TC:300,300italic,400,400italic,700,700italic|Tajawal:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yafun92386.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="利用Hexo建立好GitHub Pages後，如果想要在不同設備上發布文章的話該怎麼做?">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Hexo] GitHub Pages + Hexo跨設備同步">
+<meta property="og:url" content="http://yafun92386.github.io/2020/11/29/GitHubPages-Hexo-Sync/index.html">
+<meta property="og:site_name" content="Avon;s*Notes">
+<meta property="og:description" content="利用Hexo建立好GitHub Pages後，如果想要在不同設備上發布文章的話該怎麼做?">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-29T07:52:09.000Z">
+<meta property="article:modified_time" content="2021-02-24T02:49:05.919Z">
+<meta property="article:author" content="Avon Hsiao">
+<meta property="article:tag" content="GitHubPages">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yafun92386.github.io/2020/11/29/GitHubPages-Hexo-Sync/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>[Hexo] GitHub Pages + Hexo跨設備同步 | Avon;s*Notes</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Avon;s*Notes</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+	<link itemprop="mainEntityOfPage" href="http://yafun92386.github.io/2020/11/29/GitHubPages-Hexo-Sync/">
+
+	<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+	  <meta itemprop="image" content="/images/photo.jpg">
+	  <meta itemprop="name" content="Avon Hsiao">
+	  <meta itemprop="description" content="<p>
+Hi! 我是Avon :D </br>
+在這裡記錄一些學習筆記，</br>
+培養能力好給貓兒子買罐罐。</br>
+</p>
+">
+	</span>
+
+	<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+	  <meta itemprop="name" content="Avon;s*Notes">
+	</span>
+	  <header class="post-header">
+		<h1 class="post-title" itemprop="name headline">
+		  [Hexo] GitHub Pages + Hexo跨設備同步
+		</h1>
+
+		<div class="post-meta">
+			<span class="post-meta-item">
+			  <span class="post-meta-item-icon">
+				<i class="far fa-calendar"></i>
+			  </span>
+			  <span class="post-meta-item-text">Posted on</span>
+
+			  <time title="Created: 2020-11-29 15:52:09" itemprop="dateCreated datePublished" datetime="2020-11-29T15:52:09+08:00">2020-11-29</time>
+			</span>
+			<span class="post-meta-item">
+			  <span class="post-meta-item-icon">
+				<i class="far fa-folder"></i>
+			  </span>
+			  <span class="post-meta-item-text">In</span>
+				<span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+				  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+				</span>
+				  , 
+				<span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+				  <a href="/categories/Web/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+				</span>
+			</span>
+
+		  
+
+		</div>
+	  </header>
+
+	
+	
+	
+	<div class="post-body" itemprop="articleBody">
+
+	  
+		<p>利用Hexo建立好GitHub Pages後，如果想要在不同設備上發布文章的話該怎麼做?</p>
+<a id="more"></a>
+
+<hr>
+<h2 id="1-前置作業"><a href="#1-前置作業" class="headerlink" title="1. 前置作業"></a>1. 前置作業</h2><p><a href="https://yafun92386.github.io/2020/11/28/GitHubPags-HexowithNexT/">GitHub Pages + Hexo搭建NexT主題Blog</a></p>
+<p>發布至GitHub後，可以看到main有Blog相關文件，但之中並不包含Hexo的配置，<br>因此需上傳Hexo的配置文件，就可以透過git在不同設備上進行同步操作。</p>
+<hr>
+<h2 id="2-原設備操作"><a href="#2-原設備操作" class="headerlink" title="2. 原設備操作"></a>2. 原設備操作</h2><p>在建置好Hexo的資料夾下上將資料git到GitHub。</p>
+<h3 id="2-1-上傳Hexo配置"><a href="#2-1-上傳Hexo配置" class="headerlink" title="2.1 上傳Hexo配置"></a>2.1 上傳Hexo配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; git 初始化</span><br><span class="line">$ git init</span><br><span class="line">&#x2F;&#x2F; 對應遠端位置</span><br><span class="line">$ git remote add origin https:&#x2F;&#x2F;github.com&#x2F;&lt;username&gt;&#x2F;&lt;username&gt;.github.io.git</span><br><span class="line">&#x2F;&#x2F; 新建分支</span><br><span class="line">$ git checkout -b &lt;branchname&gt;</span><br><span class="line">&#x2F;&#x2F; 添加檔案到git</span><br><span class="line">$ git add .</span><br><span class="line">&#x2F;&#x2F; 提交</span><br><span class="line">$ git commit -m &quot;&lt;message&gt;&quot;</span><br><span class="line">&#x2F;&#x2F; 推送</span><br><span class="line">$ git push origin &lt;branckname&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="3-其他設備操作"><a href="#3-其他設備操作" class="headerlink" title="3. 其他設備操作"></a>3. 其他設備操作</h2><p>透過GitHub上的資料，即可在其他設備上進行同步操作。</p>
+<h3 id="3-1-同步資源"><a href="#3-1-同步資源" class="headerlink" title="3.1 同步資源"></a>3.1 同步資源</h3><h4 id="初次複製"><a href="#初次複製" class="headerlink" title="初次複製"></a>初次複製</h4><p>將GitHub上的資料複製至本機端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 將遠端資料複製下</span><br><span class="line">$ git clone -b &lt;branchname&gt; https:&#x2F;&#x2F;github.com&#x2F;&lt;username&gt;&#x2F;&lt;username&gt;.github.io.git</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>需安裝Hexo與必須套件，不需初始化:hexo init (已從GitHub上複製下配置參數)</p>
+</blockquote>
+<h4 id="後續同步"><a href="#後續同步" class="headerlink" title="後續同步"></a>後續同步</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 遠端與本地同步</span><br><span class="line">$ git pull origin &lt;branchname&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>同步完資源後，就可以在本機端編寫文章並上傳。</p>
+<h3 id="3-2-編寫文章"><a href="#3-2-編寫文章" class="headerlink" title="3.2 編寫文章"></a>3.2 編寫文章</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 建立新文章編輯</span><br><span class="line">$ hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-同步資源至GitHub"><a href="#3-3-同步資源至GitHub" class="headerlink" title="3.3 同步資源至GitHub"></a>3.3 同步資源至GitHub</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 添加檔案文件</span><br><span class="line">$ git add .</span><br><span class="line">&#x2F;&#x2F; 提交</span><br><span class="line">$ git commit -m &quot;&lt;message&gt;&quot;</span><br><span class="line">&#x2F;&#x2F; 推送</span><br><span class="line">$ git push origin &lt;branchname&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-更新Blog"><a href="#3-4-更新Blog" class="headerlink" title="3.4 更新Blog"></a>3.4 更新Blog</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a target="_blank" rel="noopener" href="https://www.itread01.com/content/1546966625.html">如何解決github+Hexo的部落格多終端同步問題</a><br><a target="_blank" rel="noopener" href="https://lishide.github.io/2018/02/12/hexo-blog-multi-sync/">hexo 博客搭建——多设备同步 hexo 搭建的 GitHub 博客</a></p>
+
+	</div>
+
+	
+	
+	<div>
+    
+        <div style="text-align:left;color: #888888;"> <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> 分享完畢 感謝您的閱讀 <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> </div>
+    
+</div>
+
+	  <footer class="post-footer">
+		  <div class="post-tags">
+			  <a href="/tags/GitHubPages/" rel="tag"># GitHubPages</a>
+			  <a href="/tags/Git/" rel="tag"># Git</a>
+			  <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+		  </div>
+
+		
+
+
+		
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/28/GitHubPages-HexowithNexT/" rel="prev" title="[Hexo] GitHub Pages + Hexo搭建NexT主題Blog">
+      <i class="fa fa-chevron-left"></i> [Hexo] GitHub Pages + Hexo搭建NexT主題Blog
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/11/29/WindowsforLinux/" rel="next" title="[Shell] Windows上的Linux - WSL(Windows Subsystem for Linux)">
+      [Shell] Windows上的Linux - WSL(Windows Subsystem for Linux) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+	  </footer>
+	
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%89%8D%E7%BD%AE%E4%BD%9C%E6%A5%AD"><span class="nav-text">1. 前置作業</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%8E%9F%E8%A8%AD%E5%82%99%E6%93%8D%E4%BD%9C"><span class="nav-text">2. 原設備操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%B8%8A%E5%82%B3Hexo%E9%85%8D%E7%BD%AE"><span class="nav-text">2.1 上傳Hexo配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%85%B6%E4%BB%96%E8%A8%AD%E5%82%99%E6%93%8D%E4%BD%9C"><span class="nav-text">3. 其他設備操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%90%8C%E6%AD%A5%E8%B3%87%E6%BA%90"><span class="nav-text">3.1 同步資源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E6%AC%A1%E8%A4%87%E8%A3%BD"><span class="nav-text">初次複製</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%8C%E7%BA%8C%E5%90%8C%E6%AD%A5"><span class="nav-text">後續同步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E7%B7%A8%E5%AF%AB%E6%96%87%E7%AB%A0"><span class="nav-text">3.2 編寫文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%90%8C%E6%AD%A5%E8%B3%87%E6%BA%90%E8%87%B3GitHub"><span class="nav-text">3.3 同步資源至GitHub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E6%9B%B4%E6%96%B0Blog"><span class="nav-text">3.4 更新Blog</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-text">參考資料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Avon Hsiao"
+      src="/images/photo.jpg">
+  <p class="site-author-name" itemprop="name">Avon Hsiao</p>
+  <div class="site-description" itemprop="description"><p>
+Hi! 我是Avon :D </br>
+在這裡記錄一些學習筆記，</br>
+培養能力好給貓兒子買罐罐。</br>
+</p>
+</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yafun92386" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yafun92386" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yafun92386@gmail.com" title="E-Mail → mailto:yafun92386@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/oxapplexo/" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;oxapplexo&#x2F;" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/woody0320meow" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;woody0320meow" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fas fa-paw"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Avon Hsiao</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  <!-- 滑鼠點擊 
+  <script type="text/javascript" src="/js/cursor/text.js"></script>
+  -->
+</body>
+</html>

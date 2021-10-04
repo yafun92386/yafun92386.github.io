@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/woody-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/woody-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/woody-16x16.png">
+  <link rel="mask-icon" href="/images/woody-logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif TC:300,300italic,400,400italic,700,700italic|Tajawal:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yafun92386.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="Hexo使用Markdown來編寫文章，因此來整理一些需要的語法，還有補充支援Next的Tag Plugins。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Hexo] Markdown語法整理 + NexT的Tag Plugin">
+<meta property="og:url" content="http://yafun92386.github.io/2020/11/30/Markdown-syntax/index.html">
+<meta property="og:site_name" content="Avon;s*Notes">
+<meta property="og:description" content="Hexo使用Markdown來編寫文章，因此來整理一些需要的語法，還有補充支援Next的Tag Plugins。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-30T10:18:45.000Z">
+<meta property="article:modified_time" content="2021-02-24T02:49:05.968Z">
+<meta property="article:author" content="Avon Hsiao">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Markdown">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yafun92386.github.io/2020/11/30/Markdown-syntax/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>[Hexo] Markdown語法整理 + NexT的Tag Plugin | Avon;s*Notes</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Avon;s*Notes</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+	<link itemprop="mainEntityOfPage" href="http://yafun92386.github.io/2020/11/30/Markdown-syntax/">
+
+	<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+	  <meta itemprop="image" content="/images/photo.jpg">
+	  <meta itemprop="name" content="Avon Hsiao">
+	  <meta itemprop="description" content="<p>
+Hi! 我是Avon :D </br>
+在這裡記錄一些學習筆記，</br>
+培養能力好給貓兒子買罐罐。</br>
+</p>
+">
+	</span>
+
+	<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+	  <meta itemprop="name" content="Avon;s*Notes">
+	</span>
+	  <header class="post-header">
+		<h1 class="post-title" itemprop="name headline">
+		  [Hexo] Markdown語法整理 + NexT的Tag Plugin
+		</h1>
+
+		<div class="post-meta">
+			<span class="post-meta-item">
+			  <span class="post-meta-item-icon">
+				<i class="far fa-calendar"></i>
+			  </span>
+			  <span class="post-meta-item-text">Posted on</span>
+
+			  <time title="Created: 2020-11-30 18:18:45" itemprop="dateCreated datePublished" datetime="2020-11-30T18:18:45+08:00">2020-11-30</time>
+			</span>
+			<span class="post-meta-item">
+			  <span class="post-meta-item-icon">
+				<i class="far fa-folder"></i>
+			  </span>
+			  <span class="post-meta-item-text">In</span>
+				<span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+				  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+				</span>
+				  , 
+				<span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+				  <a href="/categories/Web/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+				</span>
+			</span>
+
+		  
+
+		</div>
+	  </header>
+
+	
+	
+	
+	<div class="post-body" itemprop="articleBody">
+
+	  
+		<p>Hexo使用Markdown來編寫文章，因此來整理一些需要的語法，還有補充支援Next的Tag Plugins。</p>
+<a id="more"></a>
+
+<hr>
+<h1 id="1-Markdown"><a href="#1-Markdown" class="headerlink" title="1. Markdown"></a>1. Markdown</h1><p>Markdown是一種標記式語言，減少標籤、格式指令以強調可讀性。</p>
+<h2 id="1-1-文字樣式"><a href="#1-1-文字樣式" class="headerlink" title="1.1 文字樣式"></a>1.1 文字樣式</h2><h3 id="1-標題"><a href="#1-標題" class="headerlink" title="1) 標題"></a>1) 標題</h3><h4 id="Stext形式"><a href="#Stext形式" class="headerlink" title="Stext形式"></a>Stext形式</h4><p>分為6個層級，於行首插入<code>#</code>與空白。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 標題1</span><br><span class="line">## 標題2</span><br><span class="line">...</span><br><span class="line">###### 標題6</span><br></pre></td></tr></table></figure>
+
+<h4 id="Atx形式"><a href="#Atx形式" class="headerlink" title="Atx形式"></a>Atx形式</h4><p>採用底線形式分為最高階<code>=</code>和第二階<code>-</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">標題1</span><br><span class="line">&#x3D;&#x3D;&#x3D;</span><br><span class="line"></span><br><span class="line">標題2</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="2-分隔線"><a href="#2-分隔線" class="headerlink" title="2) 分隔線"></a>2) 分隔線</h3><p>用3個以上的星號<code>*</code>、減號<code>-</code>、底線<code>_</code>來建立分隔線，行內不能有其他符號，可以插入空白。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">***</span><br><span class="line">---</span><br><span class="line">_ _ _</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="3-文字字體"><a href="#3-文字字體" class="headerlink" title="3) 文字字體"></a>3) 文字字體</h3><p><strong>粗體</strong> <code>**粗體標示**</code> 、 <code>__粗體標示__</code></p>
+<p><em>斜體</em> <code>*斜體標示*</code></p>
+<p><strong><em>粗斜體</em></strong> <code>***粗斜體***</code></p>
+<p><del>刪除線</del> <code>~~刪除線~~</code></p>
+<p><u>底線</u> <code>&lt;u&gt;底線&lt;/u&gt;</code></p>
+<hr>
+<h3 id="4-引言"><a href="#4-引言" class="headerlink" title="4) 引言"></a>4) 引言</h3><p>使用email形式的引言，於行首加上<code>&gt;</code>，亦可使用階層、標題、清單關係語法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; If I looked compared to others far, is because I stand on giant’s shoulder. — Newton</span><br><span class="line">&gt;&gt; Imagination is more important than knowledge. — Albert Einstein</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="5-程式碼"><a href="#5-程式碼" class="headerlink" title="5) 程式碼"></a>5) 程式碼</h3><h4 id="文字程式碼"><a href="#文字程式碼" class="headerlink" title="文字程式碼"></a>文字程式碼</h4><p>輸入1個反引號<code>`</code>涵蓋。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">行內 &#96;程式碼&#96; 使用 &#96;back-ticks&#96; 將文字包起來。</span><br></pre></td></tr></table></figure>
+
+<h4 id="段落程式碼"><a href="#段落程式碼" class="headerlink" title="段落程式碼"></a>段落程式碼</h4><p>採用3個反引號<code>`</code>(英文半形)涵蓋，第一列後可以指定語言類型。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">‵‵‵c</span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello World!\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">‵‵‵</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="6-公式"><a href="#6-公式" class="headerlink" title="6) 公式"></a>6) 公式</h3><p>以<code>$</code>涵蓋表示行內公式，<code>$$</code>涵蓋表示獨立公式。</p>
+<blockquote>
+<p>其餘語法參考:<br><a target="_blank" rel="noopener" href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">MathJax basic tutorial and quick reference</a><br><a target="_blank" rel="noopener" href="https://en.wikibooks.org/wiki/LaTeX/Mathematics">LaTeX/Mathematics</a><br><a target="_blank" rel="noopener" href="https://blog.maxkit.com.tw/2020/02/markdown.html">如何在 Markdown 輸入數學公式及符號</a><br><a target="_blank" rel="noopener" href="https://hackmd.io/@RintarouTW/%E6%84%9A%E5%8D%83%E6%85%AE%E3%81%AE%E7%AD%86%E8%A8%98%E6%9C%AC/%2F%40RintarouTW%2FLaTeX_%25E8%25AA%259E%25E6%25B3%2595%25E7%25AD%2586%25E8%25A8%2598#Function">LATEX語法筆記</a></p>
+</blockquote>
+<hr>
+<h2 id="1-2-格式樣式"><a href="#1-2-格式樣式" class="headerlink" title="1.2 格式樣式"></a>1.2 格式樣式</h2><h3 id="1-清單"><a href="#1-清單" class="headerlink" title="1) 清單"></a>1) 清單</h3><p>支援有序清單和無序清單，可使用階層式。</p>
+<h4 id="有序清單"><a href="#有序清單" class="headerlink" title="有序清單"></a>有序清單</h4><p>使用文字接英文句點+空格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. Red</span><br><span class="line">2. Green</span><br><span class="line">3. Blue</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>若段落中以數字+<code>.</code>作為開頭，可改為數字+<code>\.</code></p>
+</blockquote>
+<h4 id="無序清單"><a href="#無序清單" class="headerlink" title="無序清單"></a>無序清單</h4><p>使用星號<code>*</code>、加號<code>+</code>、減號<code>-</code>+空格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* Red</span><br><span class="line">+ Green</span><br><span class="line">- Blue</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="2-待辦事項"><a href="#2-待辦事項" class="headerlink" title="2) 待辦事項"></a>2) 待辦事項</h3><p>[ ] 表示空框框，[x]顯示打勾。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- [ ] 尚未完成 </span><br><span class="line">- [x] 完成</span><br><span class="line">- [ ] 待辦</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="3-表格"><a href="#3-表格" class="headerlink" title="3) 表格"></a>3) 表格</h3><p>第一列為標題列，第二列以<code>---</code>區隔，以<code>|</code>增加欄位，欄寬會自動分配不用對齊。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">| Column 1 | Column 2 | Column 3 |</span><br><span class="line">| -------- | -------- | -------- |</span><br><span class="line">|  Text 1  |  Text 2  |  Text 3  |</span><br></pre></td></tr></table></figure>
+<p>第二列可決定對齊方式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">| Column 1 | Column 2 | Column 3 |</span><br><span class="line">| :------- | :------: | -------: |</span><br><span class="line">|靠左對齊   | 置中對齊 |   靠右對齊|</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="4-連結"><a href="#4-連結" class="headerlink" title="4) 連結"></a>4) 連結</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[連結文字](連結網址)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;連結網址&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="5-圖片"><a href="#5-圖片" class="headerlink" title="5) 圖片"></a>5) 圖片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![圖片替代文字](圖片連結)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="2-Tag-Plugins"><a href="#2-Tag-Plugins" class="headerlink" title="2. Tag Plugins"></a>2. Tag Plugins</h1><p>Hexo除了採用Markdown編寫文章，亦提供Tag Plugin編寫的功能，以下整理NexT提供的Tag。</p>
+<h2 id="1-文本置中引用"><a href="#1-文本置中引用" class="headerlink" title="1) 文本置中引用"></a>1) 文本置中引用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% centerquote %&#125;blah blah blah&#123;% endcenterquote %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% cq %&#125; blah blah blah &#123;% endcq %&#125;</span><br></pre></td></tr></table></figure>
+<p>效果: </p>
+<blockquote class="blockquote-center">
+            <i class="fa fa-quote-left"></i>
+            <p>blah blah blah </p>
+
+            <i class="fa fa-quote-right"></i>
+          </blockquote>
+
+<hr>
+<h2 id="2-Note標籤"><a href="#2-Note標籤" class="headerlink" title="2) Note標籤"></a>2) Note標籤</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; class: default, primary, success, info, warning, danger</span><br><span class="line">&#x2F;&#x2F; no-icon: Disable icon in note.</span><br><span class="line">&#123;% note [class] [no-icon] %&#125;</span><br><span class="line">blah blah blah</span><br><span class="line">&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+<p>效果:</p>
+<div class="note [] []">
+            <p>blah blah blah</p>
+          </div>
+
+<hr>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a target="_blank" rel="noopener" href="https://markdown.tw/">Markdown語法說明</a><br><a target="_blank" rel="noopener" href="https://theme-next.iissnan.com/tag-plugins.html">內置標籤-NexT使用文檔</a></p>
+
+	</div>
+
+	
+	
+	<div>
+    
+        <div style="text-align:left;color: #888888;"> <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> 分享完畢 感謝您的閱讀 <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> </div>
+    
+</div>
+
+	  <footer class="post-footer">
+		  <div class="post-tags">
+			  <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+			  <a href="/tags/Markdown/" rel="tag"># Markdown</a>
+		  </div>
+
+		
+
+
+		
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/29/WindowsforLinux/" rel="prev" title="[Shell] Windows上的Linux - WSL(Windows Subsystem for Linux)">
+      <i class="fa fa-chevron-left"></i> [Shell] Windows上的Linux - WSL(Windows Subsystem for Linux)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/12/02/Swipe-to-Unlock-The-Primer-on-Technology-and-Business-Strategy/" rel="next" title="[Review] GOOGLE、臉書、微軟專家教你的66堂科技趨勢必修課">
+      [Review] GOOGLE、臉書、微軟專家教你的66堂科技趨勢必修課 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+	  </footer>
+	
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Markdown"><span class="nav-text">1. Markdown</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E6%96%87%E5%AD%97%E6%A8%A3%E5%BC%8F"><span class="nav-text">1.1 文字樣式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A8%99%E9%A1%8C"><span class="nav-text">1) 標題</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Stext%E5%BD%A2%E5%BC%8F"><span class="nav-text">Stext形式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Atx%E5%BD%A2%E5%BC%8F"><span class="nav-text">Atx形式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%86%E9%9A%94%E7%B7%9A"><span class="nav-text">2) 分隔線</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%96%87%E5%AD%97%E5%AD%97%E9%AB%94"><span class="nav-text">3) 文字字體</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%BC%95%E8%A8%80"><span class="nav-text">4) 引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="nav-text">5) 程式碼</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E5%AD%97%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="nav-text">文字程式碼</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AE%B5%E8%90%BD%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="nav-text">段落程式碼</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%85%AC%E5%BC%8F"><span class="nav-text">6) 公式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E6%A0%BC%E5%BC%8F%E6%A8%A3%E5%BC%8F"><span class="nav-text">1.2 格式樣式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%B8%85%E5%96%AE"><span class="nav-text">1) 清單</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E6%B8%85%E5%96%AE"><span class="nav-text">有序清單</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%84%A1%E5%BA%8F%E6%B8%85%E5%96%AE"><span class="nav-text">無序清單</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%BE%85%E8%BE%A6%E4%BA%8B%E9%A0%85"><span class="nav-text">2) 待辦事項</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%A1%A8%E6%A0%BC"><span class="nav-text">3) 表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E9%80%A3%E7%B5%90"><span class="nav-text">4) 連結</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%9C%96%E7%89%87"><span class="nav-text">5) 圖片</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Tag-Plugins"><span class="nav-text">2. Tag Plugins</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%96%87%E6%9C%AC%E7%BD%AE%E4%B8%AD%E5%BC%95%E7%94%A8"><span class="nav-text">1) 文本置中引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Note%E6%A8%99%E7%B1%A4"><span class="nav-text">2) Note標籤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-text">參考資料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Avon Hsiao"
+      src="/images/photo.jpg">
+  <p class="site-author-name" itemprop="name">Avon Hsiao</p>
+  <div class="site-description" itemprop="description"><p>
+Hi! 我是Avon :D </br>
+在這裡記錄一些學習筆記，</br>
+培養能力好給貓兒子買罐罐。</br>
+</p>
+</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yafun92386" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yafun92386" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yafun92386@gmail.com" title="E-Mail → mailto:yafun92386@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/oxapplexo/" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;oxapplexo&#x2F;" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/woody0320meow" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;woody0320meow" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fas fa-paw"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Avon Hsiao</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  <!-- 滑鼠點擊 
+  <script type="text/javascript" src="/js/cursor/text.js"></script>
+  -->
+</body>
+</html>

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/woody-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/woody-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/woody-16x16.png">
+  <link rel="mask-icon" href="/images/woody-logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif TC:300,300italic,400,400italic,700,700italic|Tajawal:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yafun92386.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="Learn SQL by using Google BigQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[SQL] Kaggle Course - SQL">
+<meta property="og:url" content="http://yafun92386.github.io/2020/12/08/Kaggle-course-SQL/index.html">
+<meta property="og:site_name" content="Avon;s*Notes">
+<meta property="og:description" content="Learn SQL by using Google BigQuery">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-08T14:13:13.000Z">
+<meta property="article:modified_time" content="2021-02-24T02:49:05.955Z">
+<meta property="article:author" content="Avon Hsiao">
+<meta property="article:tag" content="Kaggle">
+<meta property="article:tag" content="SQL">
+<meta property="article:tag" content="BigQuery">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yafun92386.github.io/2020/12/08/Kaggle-course-SQL/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>[SQL] Kaggle Course - SQL | Avon;s*Notes</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Avon;s*Notes</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+	<link itemprop="mainEntityOfPage" href="http://yafun92386.github.io/2020/12/08/Kaggle-course-SQL/">
+
+	<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+	  <meta itemprop="image" content="/images/photo.jpg">
+	  <meta itemprop="name" content="Avon Hsiao">
+	  <meta itemprop="description" content="<p>
+Hi! 我是Avon :D </br>
+在這裡記錄一些學習筆記，</br>
+培養能力好給貓兒子買罐罐。</br>
+</p>
+">
+	</span>
+
+	<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+	  <meta itemprop="name" content="Avon;s*Notes">
+	</span>
+	  <header class="post-header">
+		<h1 class="post-title" itemprop="name headline">
+		  [SQL] Kaggle Course - SQL
+		</h1>
+
+		<div class="post-meta">
+			<span class="post-meta-item">
+			  <span class="post-meta-item-icon">
+				<i class="far fa-calendar"></i>
+			  </span>
+			  <span class="post-meta-item-text">Posted on</span>
+
+			  <time title="Created: 2020-12-08 22:13:13" itemprop="dateCreated datePublished" datetime="2020-12-08T22:13:13+08:00">2020-12-08</time>
+			</span>
+			<span class="post-meta-item">
+			  <span class="post-meta-item-icon">
+				<i class="far fa-folder"></i>
+			  </span>
+			  <span class="post-meta-item-text">In</span>
+				<span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+				  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+				</span>
+				  , 
+				<span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+				  <a href="/categories/Note/SQL/" itemprop="url" rel="index"><span itemprop="name">SQL</span></a>
+				</span>
+			</span>
+
+		  
+
+		</div>
+	  </header>
+
+	
+	
+	
+	<div class="post-body" itemprop="articleBody">
+
+	  
+		<p>Learn SQL by using Google BigQuery</p>
+<a id="more"></a>
+
+<hr>
+<p>BigQuery是Google提供一個無需伺服器的資料倉儲與分析服務系統，以SQL查詢資料。</p>
+<h1 id="1-事前準備"><a href="#1-事前準備" class="headerlink" title="1. 事前準備"></a>1. 事前準備</h1><p>【建立Google Cloud專案】</p>
+<p><a target="_blank" rel="noopener" href="https://console.cloud.google.com/projectselector2/home/dashboard?_ga=2.181894574.847070024.1607437297-688873900.1607437297&_gac=1.91197544.1607438686.Cj0KCQiA5bz-BRD-ARIsABjT4ngzMSMkc9Akyr7tYV7Ur0d0H4HqeveucJybK1swRhZ5yJ2uZCohYawaApHvEALw_wcB">Go to the project selector page</a></p>
+<p>【啟用BigQuery API】</p>
+<p><a target="_blank" rel="noopener" href="https://console.cloud.google.com/flows/enableapi?apiid=bigquery&_ga=2.177659564.847070024.1607437297-688873900.1607437297&_gac=1.192852184.1607438686.Cj0KCQiA5bz-BRD-ARIsABjT4ngzMSMkc9Akyr7tYV7Ur0d0H4HqeveucJybK1swRhZ5yJ2uZCohYawaApHvEALw_wcB">Enable the API</a></p>
+<p>【設定憑證】</p>
+<p><a target="_blank" rel="noopener" href="https://console.cloud.google.com/apis/credentials/serviceaccountkey?_ga=2.172948010.847070024.1607437297-688873900.1607437297&_gac=1.81295845.1607438686.Cj0KCQiA5bz-BRD-ARIsABjT4ngzMSMkc9Akyr7tYV7Ur0d0H4HqeveucJybK1swRhZ5yJ2uZCohYawaApHvEALw_wcB">Go to the Create Service Account Key page</a></p>
+<p>New a service account - Enter service account name<br>Select role list - Choose JSON format</p>
+<p>【載入金鑰】</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.environ[“GOOGLE_APPLICATION_CREDENTIALS”] = <span class="string">&quot;Project_name-Prject_number.json&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="2-使用BigQuery"><a href="#2-使用BigQuery" class="headerlink" title="2. 使用BigQuery"></a>2. 使用BigQuery</h1><p><code>Client</code> hold projects and a connection to the Big Query service.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Import Python package</span></span><br><span class="line"><span class="keyword">from</span> google.cloud <span class="keyword">import</span> bigquery</span><br><span class="line"><span class="comment"># Create a &quot;Client&quot; object</span></span><br><span class="line">client = bigquery.Client()</span><br></pre></td></tr></table></figure>
+
+<p>Fetch the dataset</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Construct a reference to the dataset</span></span><br><span class="line">dataset_ref = client.dataset(<span class="string">&quot;dataset_name&quot;</span>, project=<span class="string">&quot;bigquery-public-data&quot;</span>)</span><br><span class="line"><span class="comment"># API request - fetch the dataset</span></span><br><span class="line">dataset = client.get_dataset(dataset_ref)</span><br></pre></td></tr></table></figure>
+
+<p>List all the tables</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># List all the tables in the dataset</span></span><br><span class="line">tables = <span class="built_in">list</span>(client.list_tables(dataset))</span><br><span class="line"><span class="comment"># Print names of all tables in the dataset</span></span><br><span class="line"><span class="keyword">for</span> table <span class="keyword">in</span> tables:  </span><br><span class="line">    print(table.table_id)</span><br></pre></td></tr></table></figure>
+
+<p>Fetch the table</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Construct a reference to the table</span></span><br><span class="line">table_ref = dataset_ref.table(<span class="string">&quot;table name&quot;</span>)</span><br><span class="line"><span class="comment"># API request - fetch the table</span></span><br><span class="line">table = client.get_table(table_ref)</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-Table-Schema"><a href="#3-Table-Schema" class="headerlink" title="3. Table Schema"></a>3. Table Schema</h1><p>Structure of a table, includes:</p>
+<ul>
+<li>The <code>name</code> of the column</li>
+<li>The <code>datatype</code> in the column</li>
+<li>The <code>mode</code> of the column</li>
+<li>A <code>description</code> of the data in that column</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Print information</span></span><br><span class="line">table.schema</span><br></pre></td></tr></table></figure>
+
+<p>use <code>list_rows()</code> returns a BigQuery <code>RowIterator</code> object</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Preview the first five entries in the &quot;by&quot; column of the &quot;full&quot; table</span></span><br><span class="line">client.list_rows(table, selected_fields=table.schema[:<span class="number">1</span>], max_results=<span class="number">5</span>).to_dataframe()</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-SQL-clauses"><a href="#4-SQL-clauses" class="headerlink" title="4. SQL clauses"></a>4. SQL clauses</h1><h2 id="Select-From-amp-Where"><a href="#Select-From-amp-Where" class="headerlink" title="Select, From &amp; Where"></a>Select, From &amp; Where</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">query = &quot;&quot;&quot;</span><br><span class="line">		<span class="keyword">SELECT</span> col_name </span><br><span class="line">		<span class="keyword">FROM</span> <span class="string">`project.dataset.table`</span> </span><br><span class="line">		<span class="keyword">WHERE</span> condition / <span class="keyword">WHERE</span> col_name <span class="keyword">LIKE</span> <span class="string">&#x27;text(%term%)&#x27;</span></span><br><span class="line">		<span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set up the query</span></span><br><span class="line">query_job = client.query(query)</span><br><span class="line"><span class="comment"># API request - run the query, and return a pandas DataFrame</span></span><br><span class="line">query_result = query_job.to_dataframe()</span><br></pre></td></tr></table></figure>
+
+<p><code>QueryJobConfig</code> to estimate the size of any query.</p>
+<ul>
+<li><code>dry_run</code> parameter for without running query.</li>
+<li><code>maximum_bytes_billed</code> parameter for limit the query.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create a QueryJobConfig object to estimate size of query without running it</span></span><br><span class="line">dry_run_config = bigquery.QueryJobConfig(dry_run=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># API request - dry run query to estimate costs</span></span><br><span class="line">dry_run_query_job = client.query(query, job_config=dry_run_config)</span><br><span class="line">print(<span class="string">&quot;This query will process &#123;&#125; bytes.&quot;</span>.<span class="built_in">format</span>(dry_run_query_job.total_bytes_processed))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Only run the query if it&#x27;s less than 1 MB</span></span><br><span class="line">ONE_MB = <span class="number">1000</span>*<span class="number">1000</span></span><br><span class="line">safe_config = bigquery.QueryJobConfig(maximum_bytes_billed=ONE_MB)</span><br><span class="line"><span class="comment"># Set up the query (will only run if it&#x27;s less than 1 MB)</span></span><br><span class="line">safe_query_job = client.query(query, job_config=safe_config)</span><br><span class="line"><span class="comment"># API request - try to run the query, and return a pandas DataFrame</span></span><br><span class="line">safe_query_job.to_dataframe()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Group-By-Having-amp-Count"><a href="#Group-By-Having-amp-Count" class="headerlink" title="Group By, Having &amp; Count"></a>Group By, Having &amp; Count</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">query = &quot;&quot;&quot;</span><br><span class="line">		<span class="keyword">SELECT</span> col_name, <span class="keyword">COUNT</span>(col_id) <span class="keyword">AS</span> alias_name</span><br><span class="line">		<span class="keyword">FROM</span> <span class="string">`project.dataset.table`</span> </span><br><span class="line">		<span class="keyword">GROUP</span> <span class="keyword">BY</span> col_name</span><br><span class="line">		<span class="keyword">HAVING</span> criteria</span><br><span class="line">		<span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>If using any <code>GROUP BY</code> clause, all the variables must be passed to a <code>GROUP BY</code> command or an aggregation function.</p>
+</blockquote>
+<h2 id="Order-By"><a href="#Order-By" class="headerlink" title="Order By"></a>Order By</h2><p><a target="_blank" rel="noopener" href="https://cloud.google.com/bigquery/docs/reference/legacy-sql#datetimefunctions">Date and time functions</a></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Query to find out the number of accidents for each day of the week</span></span><br><span class="line">query = &quot;&quot;&quot;</span><br><span class="line">        <span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(col_num) <span class="keyword">AS</span> num_aname, </span><br><span class="line">               <span class="keyword">EXTRACT</span>(<span class="keyword">DAY</span> <span class="keyword">FROM</span> col_date) <span class="keyword">AS</span> day_aname</span><br><span class="line">        <span class="keyword">FROM</span> <span class="string">`project.dataset.table`</span></span><br><span class="line">        <span class="keyword">GROUP</span> <span class="keyword">BY</span> day_aname</span><br><span class="line">        <span class="keyword">ORDER</span> <span class="keyword">BY</span> num_aname <span class="keyword">DESC</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="As-amp-With"><a href="#As-amp-With" class="headerlink" title="As &amp; With"></a>As &amp; With</h2><p>Common Table Expression (CTE) : A temporary table for splitting your queries into readable chunks.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">query = &quot;&quot;&quot;</span><br><span class="line">		<span class="keyword">WITH</span> tmp_table <span class="keyword">AS</span></span><br><span class="line">		(</span><br><span class="line">			<span class="keyword">SELECT</span> col_name</span><br><span class="line">			<span class="keyword">FROM</span> <span class="string">&#x27;project.database.table&#x27;</span></span><br><span class="line">			<span class="keyword">WHERE</span> criteria</span><br><span class="line">		)</span><br><span class="line">		<span class="keyword">SELECT</span> col_name</span><br><span class="line">		<span class="keyword">FROM</span> tmp_table</span><br><span class="line">		<span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Joining-Data"><a href="#Joining-Data" class="headerlink" title="Joining Data"></a>Joining Data</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">query = &quot;&quot;&quot;</span><br><span class="line">		<span class="keyword">SELECT</span> p.Name <span class="keyword">AS</span> Parent_Name, c.Name <span class="keyword">AS</span> Child_Name</span><br><span class="line">		<span class="keyword">FROM</span> <span class="string">`project.dataset.table_P`</span> <span class="keyword">AS</span> p</span><br><span class="line">		<span class="keyword">INNER</span> <span class="keyword">JOIN</span> <span class="string">`project.dataset.table_C`</span> <span class="keyword">AS</span> c</span><br><span class="line">			  <span class="keyword">ON</span> p.c_ID = c.ID</span><br><span class="line">		<span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a target="_blank" rel="noopener" href="https://www.kaggle.com/learn/intro-to-sql">Kaggle Course - SQL</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.google.com/bigquery">Google Cloud BigQuery</a></p>
+<p><a target="_blank" rel="noopener" href="https://gcpug-tw.gitbook.io/google-cloud-platform-in-practice/google-cloud-shang-de-da-zi-liao-chu-li-fu-wu/bigquery/bigquery-jian-jie">GCPUG - BigQuery 簡介</a></p>
+
+	</div>
+
+	
+	
+	<div>
+    
+        <div style="text-align:left;color: #888888;"> <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> 分享完畢 感謝您的閱讀 <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> </div>
+    
+</div>
+
+	  <footer class="post-footer">
+		  <div class="post-tags">
+			  <a href="/tags/Kaggle/" rel="tag"># Kaggle</a>
+			  <a href="/tags/SQL/" rel="tag"># SQL</a>
+			  <a href="/tags/BigQuery/" rel="tag"># BigQuery</a>
+		  </div>
+
+		
+
+
+		
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/12/02/Swipe-to-Unlock-The-Primer-on-Technology-and-Business-Strategy/" rel="prev" title="[Review] GOOGLE、臉書、微軟專家教你的66堂科技趨勢必修課">
+      <i class="fa fa-chevron-left"></i> [Review] GOOGLE、臉書、微軟專家教你的66堂科技趨勢必修課
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/02/24/TensorFlow-overview/" rel="next" title="[TensorFlow] TensorFlow Overview">
+      [TensorFlow] TensorFlow Overview <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+	  </footer>
+	
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E4%BA%8B%E5%89%8D%E6%BA%96%E5%82%99"><span class="nav-text">1. 事前準備</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8BigQuery"><span class="nav-text">2. 使用BigQuery</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Table-Schema"><span class="nav-text">3. Table Schema</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-SQL-clauses"><span class="nav-text">4. SQL clauses</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Select-From-amp-Where"><span class="nav-text">Select, From &amp; Where</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Group-By-Having-amp-Count"><span class="nav-text">Group By, Having &amp; Count</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Order-By"><span class="nav-text">Order By</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#As-amp-With"><span class="nav-text">As &amp; With</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Joining-Data"><span class="nav-text">Joining Data</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-text">參考資料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Avon Hsiao"
+      src="/images/photo.jpg">
+  <p class="site-author-name" itemprop="name">Avon Hsiao</p>
+  <div class="site-description" itemprop="description"><p>
+Hi! 我是Avon :D </br>
+在這裡記錄一些學習筆記，</br>
+培養能力好給貓兒子買罐罐。</br>
+</p>
+</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yafun92386" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yafun92386" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yafun92386@gmail.com" title="E-Mail → mailto:yafun92386@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/oxapplexo/" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;oxapplexo&#x2F;" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/woody0320meow" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;woody0320meow" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fas fa-paw"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Avon Hsiao</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  <!-- 滑鼠點擊 
+  <script type="text/javascript" src="/js/cursor/text.js"></script>
+  -->
+</body>
+</html>
