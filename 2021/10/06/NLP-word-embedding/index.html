@@ -20,17 +20,23 @@
     var CONFIG = {"hostname":"yafun92386.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="Hi! 我是Avon :D  在這裡記錄一些學習筆記， 培養能力好給貓兒子買罐罐。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Avon;s*Notes">
-<meta property="og:url" content="http://yafun92386.github.io/tags/CI/index.html">
+  <meta name="description" content="Word Embedding詞嵌入(Word Embedding)是自然語言處理中用來表示詞特徵的技術，概念上指從所有字詞數量的高維空間上嵌入到較低維的向量空間，空間中詞向量的相似程度越高表示字詞有相近的意思。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="詞嵌入向量比較">
+<meta property="og:url" content="http://yafun92386.github.io/2021/10/06/NLP-word-embedding/index.html">
 <meta property="og:site_name" content="Avon;s*Notes">
-<meta property="og:description" content="Hi! 我是Avon :D  在這裡記錄一些學習筆記， 培養能力好給貓兒子買罐罐。">
+<meta property="og:description" content="Word Embedding詞嵌入(Word Embedding)是自然語言處理中用來表示詞特徵的技術，概念上指從所有字詞數量的高維空間上嵌入到較低維的向量空間，空間中詞向量的相似程度越高表示字詞有相近的意思。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://miro.medium.com/max/974/0*wSaW3N9-pkE1ESCQ">
+<meta property="article:published_time" content="2021-10-06T04:00:17.000Z">
+<meta property="article:modified_time" content="2021-10-06T06:26:39.539Z">
 <meta property="article:author" content="Avon Hsiao">
+<meta property="article:tag" content="NLP">
+<meta property="article:tag" content="Word Embedding">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://miro.medium.com/max/974/0*wSaW3N9-pkE1ESCQ">
 
-<link rel="canonical" href="http://yafun92386.github.io/tags/CI/">
+<link rel="canonical" href="http://yafun92386.github.io/2021/10/06/NLP-word-embedding/">
 
 
 <script id="page-configurations">
@@ -38,12 +44,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Tag: CI | Avon;s*Notes</title>
+  <title>詞嵌入向量比較 | Avon;s*Notes</title>
   
 
 
@@ -151,51 +157,114 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">CI
-          <small>Tag</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+	<link itemprop="mainEntityOfPage" href="http://yafun92386.github.io/2021/10/06/NLP-word-embedding/">
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+	<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+	  <meta itemprop="image" content="/images/photo.jpg">
+	  <meta itemprop="name" content="Avon Hsiao">
+	  <meta itemprop="description" content="<p>
+Hi! 我是Avon :D </br>
+在這裡記錄一些學習筆記，</br>
+培養能力好給貓兒子買罐罐。</br>
+</p>
+">
+	</span>
+
+	<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+	  <meta itemprop="name" content="Avon;s*Notes">
+	</span>
+	  <header class="post-header">
+		<h1 class="post-title" itemprop="name headline">
+		  詞嵌入向量比較
+		</h1>
+
+		<div class="post-meta">
+			<span class="post-meta-item">
+			  <span class="post-meta-item-icon">
+				<i class="far fa-calendar"></i>
+			  </span>
+			  <span class="post-meta-item-text">Posted on</span>
+
+			  <time title="Created: 2021-10-06 12:00:17" itemprop="dateCreated datePublished" datetime="2021-10-06T12:00:17+08:00">2021-10-06</time>
+			</span>
+			<span class="post-meta-item">
+			  <span class="post-meta-item-icon">
+				<i class="far fa-folder"></i>
+			  </span>
+			  <span class="post-meta-item-text">In</span>
+				<span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+				  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+				</span>
+				  , 
+				<span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+				  <a href="/categories/Note/NLP/" itemprop="url" rel="index"><span itemprop="name">NLP</span></a>
+				</span>
+			</span>
+
+		  
+
+		</div>
+	  </header>
+
+	
+	
+	
+	<div class="post-body" itemprop="articleBody">
+
+	  
+		<h2 id="Word-Embedding"><a href="#Word-Embedding" class="headerlink" title="Word Embedding"></a>Word Embedding</h2><p>詞嵌入(Word Embedding)是自然語言處理中用來表示詞特徵的技術，概念上指從所有字詞數量的高維空間上嵌入到較低維的向量空間，空間中詞向量的相似程度越高表示字詞有相近的意思。</p>
+<a id="more"></a>
+
+<p>以下比較三者預訓練詞向量:</p>
+<h2 id="Word2Vec"><a href="#Word2Vec" class="headerlink" title="Word2Vec"></a>Word2Vec</h2><p><img src="https://miro.medium.com/max/974/0*wSaW3N9-pkE1ESCQ" alt="Word2Vec"></p>
+<p><sup><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1301.3781.pdf">Word2Vec model</a></p>
+<h3 id="Skip-gram"><a href="#Skip-gram" class="headerlink" title="Skip-gram"></a>Skip-gram</h3><h3 id="CBOW"><a href="#CBOW" class="headerlink" title="CBOW"></a>CBOW</h3><h2 id="GloVe"><a href="#GloVe" class="headerlink" title="GloVe"></a>GloVe</h2><h2 id="FastText"><a href="#FastText" class="headerlink" title="FastText"></a>FastText</h2><hr>
+<p>《 … 待續 … 》</p>
+<hr>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Word_embedding">Word Embedding - Wiki</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/56382372">NLP中的詞向量對比</a></p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/allenyummy-note/word-embedding-%E8%A9%9E%E5%B5%8C%E5%85%A5-%E8%A9%9E%E5%90%91%E9%87%8F-2003-2020-dae141868a96">Word Embedding (2003~2020)</a></p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/analytics-vidhya/word-embeddings-in-nlp-word2vec-glove-fasttext-24d4d4286a73">Word Embeddings in NLP</a></p>
+
+	</div>
+
+	
+	
+	<div>
+    
+        <div style="text-align:left;color: #888888;"> <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> 分享完畢 感謝您的閱讀 <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> <i class="fa fa-paw"></i> </div>
+    
+</div>
+
+	  <footer class="post-footer">
+		  <div class="post-tags">
+			  <a href="/tags/NLP/" rel="tag"># NLP</a>
+			  <a href="/tags/Word-Embedding/" rel="tag"># Word Embedding</a>
+		  </div>
+
+		
+
+
+		
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/24/DevOps-overview/" rel="prev" title="[DevOps] DevOps Overview">
+      <i class="fa fa-chevron-left"></i> [DevOps] DevOps Overview
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-09-24T12:12:36+08:00"
-              content="2021-09-24">
-          09-24
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/24/DevOps-overview/" itemprop="url">
-            <span itemprop="name">[DevOps] DevOps Overview</span>
-          </a>
-      </div>
-
-    </header>
+	  </footer>
+	
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -248,6 +317,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Word-Embedding"><span class="nav-text">Word Embedding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Word2Vec"><span class="nav-text">Word2Vec</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Skip-gram"><span class="nav-text">Skip-gram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CBOW"><span class="nav-text">CBOW</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GloVe"><span class="nav-text">GloVe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FastText"><span class="nav-text">FastText</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-text">參考資料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
